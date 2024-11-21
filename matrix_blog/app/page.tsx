@@ -13,24 +13,25 @@ import {
 import { Github, Twitter, Linkedin } from "lucide-react";
 import Link from "next/link";
 
+
 export default function Home() {
   const [matrixText, setMatrixText] = useState("");
 
-  useEffect(() => {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+";
-    const interval = setInterval(() => {
-      let result = "";
-      for (let i = 0; i < 50; i++) {
-        result += characters.charAt(
-          Math.floor(Math.random() * characters.length)
-        );
-      }
-      setMatrixText(result);
-    }, 100);
+  // useEffect(() => {
+  //   const characters =
+  //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()_+";
+  //   const interval = setInterval(() => {
+  //     let result = "";
+  //     for (let i = 0; i < 50; i++) {
+  //       result += characters.charAt(
+  //         Math.floor(Math.random() * characters.length)
+  //       );
+  //     }
+  //     setMatrixText(result);
+  //   }, 100);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="min-h-screen bg-black text-green-500 font-mono">
@@ -41,12 +42,12 @@ export default function Home() {
             <div
               key={i}
               className="absolute text-2xl whitespace-nowrap"
-              style={{
-                top: `${i * 10}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animation: "matrix-fall 10s linear infinite",
-              }}
+              // style={{
+              //   top: `${i * 10}%`,
+              //   left: `${Math.random() * 100}%`,
+              //   animationDelay: `${Math.random() * 5}s`,
+              //   animation: "matrix-fall 10s linear infinite",
+              // }}
             >
               {matrixText}
             </div>
@@ -147,7 +148,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="py-10 px-4 border-t border-green-500">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} MatrixBlog. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} MatrixBlog. All rights reserved.
+          </p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <Link href="#" aria-label="GitHub">
               <Github className="w-6 h-6" />
@@ -162,7 +165,7 @@ export default function Home() {
         </div>
       </footer>
 
-      <style jsx global>{`
+      {/* <style jsx global>{`
         @keyframes matrix-fall {
           0% {
             transform: translateY(-100%);
@@ -171,7 +174,7 @@ export default function Home() {
             transform: translateY(100vh);
           }
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 }
