@@ -1,5 +1,5 @@
 {
-  "name": "modern-blog",
+  "name": "matrix-blog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -22,8 +22,9 @@
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
     "lucide-react": "^0.330.0",
+    "mongoose": "^8.8.2",
     "next": "14.1.0",
-    "next-auth": "^5.0.0-beta.13",
+    "next-auth": "^4.24.10",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
