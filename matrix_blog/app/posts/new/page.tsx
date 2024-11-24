@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { Category } from "@prisma/client";
 
 export default function NewPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const router = useRouter();
   const { data: session } = useSession();
+
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => setCategories(data));
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +29,11 @@ export default function NewPost() {
       const res = await fetch("/api/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, content }),
+        body: JSON.stringify({
+          title,
+          content,
+          categories: selectedCategories,
+        }),
       });
       if (res.ok) {
         router.push("/dashboard");
@@ -58,6 +71,34 @@ export default function NewPost() {
             required
             className="w-full px-3 py-2 border rounded h-40"
           />
+        </div>
+        <div>
+          <label className="block mb-1">Categories</label>
+          <div className="space-y-2">
+            {categories.map((category) => (
+              <label key={category.id} className="flex items-center">
+                <input
+                  type="checkbox"
+                  value={category.id}
+                  checked={selectedCategories.includes(category.id)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setSelectedCategories([
+                        ...selectedCategories,
+                        category.id,
+                      ]);
+                    } else {
+                      setSelectedCategories(
+                        selectedCategories.filter((id) => id !== category.id)
+                      );
+                    }
+                  }}
+                  className="mr-2"
+                />
+                {category.name}
+              </label>
+            ))}
+          </div>
         </div>
         <button
           type="submit"
