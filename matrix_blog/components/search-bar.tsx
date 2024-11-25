@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Input } from "../components/ui/input";
 
 export default function SearchBar({ className = "" }: { className?: string }) {
   const [search, setSearch] = useState("");
@@ -14,7 +15,7 @@ export default function SearchBar({ className = "" }: { className?: string }) {
 
   return (
     <form onSubmit={handleSubmit} className={`flex ${className}`}>
-      <input
+      <Input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
