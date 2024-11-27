@@ -1,9 +1,9 @@
-import { BentoCard, BentoGrid } from "@/components/custom/bento-grid";
-import { MinimalTiptapEditor } from "../minimal-tiptap";
 import { cn } from "@/lib/utils";
 import { MinimalTiptapOne } from "./minimal-tiptap-one";
 import { MinimalTiptapThree } from "./minimal-tiptap-three";
-import Content from "../../data/content.json";
+import Content from "../data/content.json";
+import { BentoGrid } from './ui/bento-grid';
+import MinimalTiptapEditor from './minimal-tiptap';
 
 const features = [
   {

@@ -1,14 +1,12 @@
 import * as React from "react";
-import "@/components/minimal-tiptap/styles/index.css";
-
 import type { Content, Editor } from "@tiptap/react";
-import type { UseMinimalTiptapEditorProps } from "@/components/minimal-tiptap/hooks/use-minimal-tiptap";
+import type { UseMinimalTiptapEditorProps } from "@/hooks/use-minimal-tiptap";
 import { EditorContent } from "@tiptap/react";
 import { cn } from "@/lib/utils";
-import { SectionTwo } from "@/components/minimal-tiptap/components/section/two";
-import { LinkBubbleMenu } from "@/components/minimal-tiptap/components/bubble-menu/link-bubble-menu";
-import { useMinimalTiptapEditor } from "@/components/minimal-tiptap/hooks/use-minimal-tiptap";
-import { MeasuredContainer } from "../minimal-tiptap/components/measured-container";
+import { LinkBubbleMenu } from "./bubble-menu";
+import SectionTwo from './section/two';
+import useMinimalTiptapEditor from '../hooks/use-minimal-tiptap';
+import { MeasuredContainer } from './measured-container';
 
 export interface MinimalTiptapProps
   extends Omit<UseMinimalTiptapEditorProps, "onUpdate"> {

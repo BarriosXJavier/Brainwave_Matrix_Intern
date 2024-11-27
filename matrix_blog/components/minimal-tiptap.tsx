@@ -1,18 +1,16 @@
-import * as React from "react";
-
 import type { Content, Editor } from "@tiptap/react";
-import type { UseMinimalTiptapEditorProps } from "../hooks/use-minimal-tiptap";
+import type { UseMinimalTiptapEditorProps } from "@/hooks/use-minimal-tiptap";
 import { EditorContent } from "@tiptap/react";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { SectionTwo } from "./section/two";
-import { SectionThree } from "./section/three";
-import { SectionFour } from "./section/four";
-import { SectionFive } from "./section/five";
-import SectionOne from './section/one';
-import useMinimalTiptapEditor from '../hooks/use-minimal-tiptap';
-import { MeasuredContainer } from './measured-container';
-import { LinkBubbleMenu } from './bubble-menu';
+import SectionOne from "./section/one";
+import SectionTwo from "./section/two";
+import SectionThree from "./section/three";
+import SectionFive from "./section/five";
+import SectionFour from "./section/four";
+import { LinkBubbleMenu } from "./bubble-menu";
+import useMinimalTiptapEditor from "../hooks/use-minimal-tiptap";
+import { MeasuredContainer } from "./measured-container";
 
 export interface MinimalTiptapProps
   extends Omit<UseMinimalTiptapEditorProps, "onUpdate"> {
@@ -25,50 +23,47 @@ export interface MinimalTiptapProps
 const Toolbar = ({ editor }: { editor: Editor }) => (
   <div className="shrink-0 overflow-x-auto border-b border-border p-2">
     <div className="flex w-max items-center gap-px">
-      <SectionOne editor={editor} activeLevels={[1, 2, 3]} variant="outline" />
+      <SectionOne editor={editor} activeLevels={[1, 2, 3, 4, 5, 6]} />
 
       <Separator orientation="vertical" className="mx-2 h-7" />
 
       <SectionTwo
         editor={editor}
         activeActions={[
-          "italic",
           "bold",
+          "italic",
           "underline",
-          "code",
           "strikethrough",
+          "code",
           "clearFormatting",
         ]}
-        mainActionCount={5}
-        variant="outline"
+        mainActionCount={3}
       />
 
       <Separator orientation="vertical" className="mx-2 h-7" />
 
-      <SectionThree editor={editor} variant="outline" />
+      <SectionThree editor={editor} />
 
       <Separator orientation="vertical" className="mx-2 h-7" />
 
       <SectionFour
         editor={editor}
-        activeActions={["bulletList", "orderedList"]}
-        mainActionCount={2}
-        variant="outline"
+        activeActions={["orderedList", "bulletList"]}
+        mainActionCount={0}
       />
 
       <Separator orientation="vertical" className="mx-2 h-7" />
 
       <SectionFive
         editor={editor}
-        activeActions={["blockquote", "codeBlock", "horizontalRule"]}
-        mainActionCount={3}
-        variant="outline"
+        activeActions={["codeBlock", "blockquote", "horizontalRule"]}
+        mainActionCount={0}
       />
     </div>
   </div>
 );
 
-export const MinimalTiptapThree = React.forwardRef<
+export const MinimalTiptapEditor = React.forwardRef<
   HTMLDivElement,
   MinimalTiptapProps
 >(({ value, onChange, className, editorContentClassName, ...props }, ref) => {
@@ -102,6 +97,6 @@ export const MinimalTiptapThree = React.forwardRef<
   );
 });
 
-MinimalTiptapThree.displayName = "MinimalTiptapThree";
+MinimalTiptapEditor.displayName = "MinimalTiptapEditor";
 
-export default MinimalTiptapThree;
+export default MinimalTiptapEditor;

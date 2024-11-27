@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/popover";
 import { Link2Icon } from "@radix-ui/react-icons";
 import { ToolbarButton } from "../toolbar-button";
-import { LinkEditBlock } from "./link-edit-block";
+import LinkEditBlock from './link-edit-blog';
 
 interface LinkEditPopoverProps extends VariantProps<typeof toggleVariants> {
   editor: Editor;
